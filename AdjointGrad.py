@@ -39,6 +39,7 @@ class AdjointGrad:
             det_func.append(func.diff(lst_xi[i]))
 
         j = 0
+        c = 0
         while j < 10:
             i = 0
             podst = []
