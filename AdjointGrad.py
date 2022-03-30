@@ -2,7 +2,7 @@ import pandas as pd
 from sympy import *
 import re
 import numpy as np
-#from BrentMet_var2_help import BrentMet
+from mnog_opt.BrentMet_var2_help import *
 
 
 class AdjointGrad:
