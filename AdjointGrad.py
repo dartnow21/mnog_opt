@@ -1,6 +1,7 @@
 import pandas as pd
 from sympy import *
-import re
+from re import findall
+from re import sub
 import numpy as np
 from mnog_opt.BrentMet_var2_help import *
 
@@ -29,7 +30,7 @@ class AdjointGrad:
         """
         func = sympify(z)
         l = Symbol('l')
-        lst_xi = np.sort(list(set(re.findall(r'[x]\d', z))))
+        lst_xi = np.sort(list(set(findall(r'[x]\d', z))))
 
         df = pd.DataFrame(columns=['Номер итерации', 'Полученные значения'])
 
@@ -55,7 +56,7 @@ class AdjointGrad:
                 for k in range(len(lam)):
                     podst_f_l.append((lst_xi[k], lam[k][0]))
                 f_l = str(func.subs(podst_f_l))
-                f_l = re.sub(r'l', r'x', f_l)
+                f_l = sub(r'l', r'x', f_l)
                 lam = BrentMet()
                 l_min = lam.find(f_l, -5, 5, e, 100)
                 xk = x + np.dot(l_min, S)
