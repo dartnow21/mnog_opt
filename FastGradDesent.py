@@ -4,7 +4,8 @@ import numpy as np
 import matplotlib.animation as animation
 import pandas as pd
 from sympy import *
-import re
+from re import findall
+from re import sub
 
 from mnog_opt.BrentMet_var2_help import *
 
@@ -39,7 +40,7 @@ class FastGradDesent:
         lst_x_plot = []
         for i in range(len(x)):
             lst_x_plot.append(float(x[i][0]))
-        lst_xi = np.sort(list(set(re.findall(r'[x]\d', z))))
+        lst_xi = np.sort(list(set(findall(r'[x]\d', z))))
         l = Symbol('l')
         det_func = []
         for i in range(len(lst_xi)):
@@ -62,7 +63,7 @@ class FastGradDesent:
             for j in range(len(lam)):
                 podst_f_l.append((lst_xi[j], lam[j][0]))
             f_l = str(func.subs(podst_f_l))
-            f_l = re.sub(r'l', r'x', f_l)
+            f_l = sub(r'l', r'x', f_l)
 
             lam = BrentMet()
             l_min = lam.find(f_l, -5, 5, e, iter)
