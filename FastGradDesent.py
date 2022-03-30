@@ -6,7 +6,8 @@ import pandas as pd
 from sympy import *
 import re
 
-#from BrentMet_var2_help import BrentMet
+from mnog_opt.BrentMet_var2_help import *
+
 
 
 class FastGradDesent:
