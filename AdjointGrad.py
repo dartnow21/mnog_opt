@@ -34,7 +34,7 @@ class AdjointGrad:
         c=0
         func = sympify(z)
         l = Symbol('l')
-        lst_xi = np.sort(list(set(findall(r'[x]\d', z))))
+        lst_xi = np.sort(list(set(re.findall(r'[x]\d', z))))
 
         grad = []
         for i in range(len(lst_xi)):
@@ -49,39 +49,41 @@ class AdjointGrad:
                 calc_grad.append(grad[k].subs(su))
             calc_grad = np.array(calc_grad)
             S = -1*calc_grad
+            x_jk = x
 
             while i+1<len(lst_xi):
 
                 lam = x + l*S
                 su1 = dict(zip(lst_xi, lam))
                 f_l = str(func.subs(su1))
-                f_l = sub(r'l', r'x', f_l)
+                f_l = re.sub(r'l', r'x', f_l)
                 lam = BrentMet()
+                
                 l_min = lam.find(f_l, -100, 100, e*10, 100)
-                xk = x + l_min*S
+                
+                x_jk_1 = x_jk + l_min*S
 
 
-                su_xk = dict(zip(lst_xi, xk))
-                calc_grad_xk = []
+                su_xjk_1 = dict(zip(lst_xi, x_jk_1))
+                calc_grad_xjk_1 = []
                 for k in range(len(lst_xi)):
-                    calc_grad_xk.append(grad[k].subs(su_xk))
-                calc_grad_xk = np.array(calc_grad_xk)
+                    calc_grad_xjk_1.append(grad[k].subs(su_xjk_1))
+                calc_grad_xjk_1 = np.array(calc_grad_xjk_1)
 
                 sum_grad = (calc_grad**2).sum()
-                sum_grad_k = (calc_grad_xk**2).sum()
-                Skj = -1*calc_grad_xk + (sum_grad_k/sum_grad) * S
+                sum_grad_k = (calc_grad_xjk_1**2).sum()
+                Skj = -1*calc_grad_xjk_1 + (sum_grad_k/sum_grad) * S
 
                 met_Skj = (Skj**2).sum()**(1/2)
-                su_after = su_xk
+                su_after = su_xjk_1
 
-                x_beauty = xk
+                x_beauty = x_jk_1
                 if flag1 == 1:
                     print(f'Итерация №{i}, точка {tuple(x_beauty)}')
                 if flag2 == 1:
                     df.loc[i] = [i, tuple(x_beauty)]
 
-
-                x_met = ((xk - x)**2).sum()**(1/2)
+                x_met = ((x_jk_1 - x_jk)**2).sum()**(1/2)
                 # Написать датасеты использовать x_beauty
                 if extr == 0:
 
@@ -96,11 +98,12 @@ class AdjointGrad:
                         print(f'Значение функции в точке максимума {float(func.subs(su_after))}')
                         c = 1
                         break
+                x_jk = x_jk_1
                 S = Skj
                 i += 1
             if c == 1:
                 break
-            x = xk
+            x = x_jk
             j += 1
         return x_beauty
 
