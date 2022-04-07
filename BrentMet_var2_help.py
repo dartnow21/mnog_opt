@@ -4,6 +4,8 @@ import time
 import math
 
 
+
+
 class BrentMet:
 
     def PoiskVershin(self, x1, y1, x2, y2, x3, y3):
@@ -89,4 +91,3 @@ class BrentMet:
 
 #function = BrentMet()
 #function.find('-34*x-1', -10, 10, 0.001, 500)
-
