@@ -16,4 +16,6 @@
 
 ## Демонстрация возможностей программы
 
+Тесты на время работы алгоритмов с разными функциями: https://github.com/dartnow21/mnog_opt/blob/main/Parametr.docx
+
 Пример программы представлен в GoogleColab: https://colab.research.google.com/drive/14cUNmo-R11oXaX-SuFtZXYEZUSm7V1lE?usp=sharing
