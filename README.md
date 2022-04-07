@@ -6,6 +6,7 @@
 Мы вели проект в Jira, где представлены наши основные задачи: 
 
 Документация проекта:
+
 1 - Mетод градиентного спуска с постоянным шагом: https://github.com/dartnow21/mnog_opt/blob/main/Metod_gradientnogo_spuska_s_postoyannym_shagom.docx
 
 2 - Метод градиентного спуска с дроблением шага: https://github.com/dartnow21/mnog_opt/blob/main/Metod_gradientnogo_spuska_s_drobleniem_shaga.docx
