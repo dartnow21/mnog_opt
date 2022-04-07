@@ -3,7 +3,7 @@
 
 Подробнее узнать о задании можно по ссылке: https://github.com/dartnow21/mnog_opt/blob/main/TZ_Gradientnye_metody.docx
 
-Мы вели проект в Jira, где представлены наши основные задачи: 
+Мы вели проект в Jira, где представлены наши основные задачи: https://twoteam.atlassian.net/jira/software/projects/LAB3/boards/3
 
 Документация проекта:
 
