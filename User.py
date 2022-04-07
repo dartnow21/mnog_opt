@@ -7,7 +7,6 @@ from mnog_opt.GradDesentConstStep import *
 from mnog_opt.GradDesentDrobStep import *
 
 
-
 class User:
     def userAnswer(self):
         """
@@ -315,13 +314,13 @@ class User:
                 f = "- (" + f + ")"
                 print(f)
             count_param = np.sort(list(set(re.findall(r'[x]\d', f))))
-            print("Введите шаг. Например: 0.01")
-            l = float(input())
+            #print("Введите шаг. Например: 0.01")
+            #l = float(input())
             print("Введите начальную точку, из которой начинаем спуск.")
             lst_xi = []
             for i in range(len(count_param)):
                 print(f'Введите {count_param[i]}. Например: 1')
-                xi = [float(input())]
+                xi = float(input())
                 lst_xi.append(xi)
 
             while True:
