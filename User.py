@@ -290,9 +290,17 @@ class User:
                     break
                 else:
                     print("Такой команды нет. Введите снова")
+                    
+            namegraph = " "
+            if len(lst_xi) == 1:
+                print("У вас функция одной переменной, предлагаем вам увидеть визуализацию функции на 2д графике. Введите название для графика")
+                namegraph = input()            
 
             function = FastGradDesent()
-            function.find(f, lst_xi, iter, e, flag1, flag2, extr)
+            function.find(f, lst_xi, iter, e, flag1, flag2, extr, namegraph)
+            if len(lst_xi) == 1:
+                print("Гифка с графиком появилась в папке проекта")
+            
 
         # Алгоритм Ньютона-сопряженного градиента
         elif user_answer == 4:
