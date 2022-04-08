@@ -145,7 +145,8 @@ class FastGradDesent:
 
             myAnimation = animation.FuncAnimation(fig, animate, frames=lst_x_plot,
                                                   interval=500, blit=True, repeat=True)
-
+            plt.show()
+        
             myAnimation.save(f'{namegraph}.gif', writer='imagemagick')
 
 
