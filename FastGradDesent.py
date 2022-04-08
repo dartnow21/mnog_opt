@@ -12,7 +12,7 @@ from mnog_opt.BrentMet_var2_help import *
 
 
 class FastGradDesent:
-    def find(self, z, x, iter, e, flag1, flag2, extr):
+    def find(self, z, x, iter, e, flag1, flag2, extr, namegraph):
         """
         Поиск экстремума функции многих переменных методом наискорейшего градиентного спуска
         Parameters
@@ -31,6 +31,8 @@ class FastGradDesent:
             запись промежуточных результатов в датасет 1 - да / 0 - нет
         :param extr: int
             экстремум который вы хотите найти 1 - максимум, 0 - минимум
+        :param namegraph: str
+            принимает параметр str, рисует график только 2д, тоесть функции только одной переменной
         :return:
             Возвращает точку максимума или минимума, значение функции в точке минимума и датасет с промежуточными
              вычислениями
@@ -144,7 +146,7 @@ class FastGradDesent:
             myAnimation = animation.FuncAnimation(fig, animate, frames=lst_x_plot,
                                                   interval=500, blit=True, repeat=True)
 
-            plt.show()
+            myAnimation.save(f'{name_graph}.gif', writer='imagemagick')
 
 
 # while True:
