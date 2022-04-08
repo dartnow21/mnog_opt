@@ -147,7 +147,7 @@ class FastGradDesent:
                                                   interval=500, blit=True, repeat=True)
             plt.show()
         
-            myAnimation.save(f'{namegraph}.gif', writer='imagemagick')
+            myAnimation.save('1.gif', writer='imagemagick')
 
 
 # while True:
