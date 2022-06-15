@@ -34,7 +34,7 @@ class AdjointGrad:
         c=0
         func = sympify(z)
         l = Symbol('l')
-        lst_xi = np.sort(list(set(re.findall(r'[x]\d', z))))
+        lst_xi = np.sort(list(set(findall(r'[x]\d', z))))
 
         grad = []
         for i in range(len(lst_xi)):
@@ -56,7 +56,7 @@ class AdjointGrad:
                 lam = x + l*S
                 su1 = dict(zip(lst_xi, lam))
                 f_l = str(func.subs(su1))
-                f_l = re.sub(r'l', r'x', f_l)
+                f_l = sub(r'l', r'x', f_l)
                 lam = BrentMet()
                 
                 l_min = lam.find(f_l, -100, 100, e*10, 100)
